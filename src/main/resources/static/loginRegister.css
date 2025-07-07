@@ -1,0 +1,133 @@
+body, html{
+            height: 100vh;
+            margin: 0;
+            background-color: rgb(243, 243, 243);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        p{
+            margin: 0;
+        }
+
+        .icon{
+            width: 20px;
+        }
+
+        .pageContainer{
+            display: flex;
+
+        }
+
+        .titleContainer{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5%;
+        }
+        
+        .accountTextContainer{
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 8%;
+        }
+
+        .loginContainer{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: white;
+            height: 100vh;
+            width: 400px;
+            padding: 16px;
+            margin-right: 10px;
+        }
+
+        .backgroundContainer{
+            padding-top: 30px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .inputContainer{
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 300px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 5%;
+            box-shadow: 0 0 2px rgba(0,0,0,0.1);
+            
+        }
+
+        .inputContainer input{
+            flex: 1;
+            padding: 10px;
+            border: none;
+            background-color: rgb(230, 230, 230);
+            font-size: 14px;
+        }
+
+        .inputIconContainer{
+            background-color: #0CC1E0;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .inputIcon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        button{
+            height: 30px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        .loginButton,
+        .signupButton {
+            width: 100%;
+            max-width: 300px;
+            align-self: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .loginButton{
+            background-color: #0CC1E0;
+            color: white;
+            border: none;
+        }
+
+        .loginButton:hover{
+            background-color: #44daf5;
+            cursor: pointer;
+        }
+
+        .signupButton{
+            color: #0CC1E0;
+            border: 1px solid #0CC1E0;
+        }
+
+        .signupButton:hover{
+            background-color: rgb(218, 218, 218);
+            cursor: pointer;
+        }
+
+
+        .buttonsContainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }

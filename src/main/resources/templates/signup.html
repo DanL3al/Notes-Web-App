@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" th:href="@{/loginRegister.css}">
+</head>
+<body>
+    <div class="pageContainer">
+        <div class="loginContainer">
+            <div class="titleContainer">
+                <h1 class="title">Remember It</h1>
+            </div>
+                <div class="accountTextContainer">
+                    <p>Create your account</p>
+                </div>
+                
+                <p>Username</p>
+                
+                <div class="inputContainer">
+                    <input type="text" placeholder="Enter your Username" class="username">
+                    <div class="inputIconContainer">
+                        <img th:src="@{/emailIcon.png}" class="inputIcon" alt="Email icon">
+                    </div>
+                </div>
+
+                <p>Name</p>
+                <div class="inputContainer">
+                    <input type="text" placeholder="Enter your name" class="name">
+                    <div class="inputIconContainer">
+                        <img th:src="@{/person.png}" class="inputIcon" alt="Email icon">
+                    </div>
+                </div>
+
+                <p>Password</p>
+
+                <div class="inputContainer">
+                    <input type="password" name="" id="" placeholder="Enter your password" class="password">
+                    <div class="inputIconContainer">
+                        <img th:src="@{padlock.png}" alt="" class="inputIcon">
+                    </div>
+                </div>
+
+                
+                
+                <div class="buttonsContainer">
+                    <button class="loginButton" onclick="register()">Sign Up</button>
+                    <div class="accountText">
+                        <a th:href="@{/}">
+                            <p>Already have an account?</p>
+                        </a>
+                    </div>
+                    <button class="signupButton" th:onclick="'window.location.href=\'/\''">Login page</button>
+                </div>
+        </div>
+
+            <div class="backgroundContainer">
+                <h1>Helping you Remember It!</h1>
+                <img th:src="@{/backgroundImage.png}" alt="">
+            </div>
+    </div>
+
+    <script th:src="@{/script.js}"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <link th:href="@{note.css}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="name-container">
+            <div class="nameInitial"></div>
+            <div class="name"></div>
+        </div>
+        <button class="exit" onclick="logoutUser()">Exit</button>
+    </nav>
+    
+    <section class="sectionOne">
+        <div class="addNotesContainer">
+            <button class="addButton" onclick="addModal()">+</button>
+            <p>Add Notes</p>
+        </div>
+    </section>
+
+    <div class="modalContainer">
+        <div class="modal">
+            <div class="title">
+                <h1>Create Note</h1>
+            </div>
+            <p>Message: </p>
+            <textarea name="" class="textArea" placeholder="Enter the note text"></textarea>
+            <div class="buttonsContainer">
+                <button onclick="createNote()">Create</button>
+                <button onclick="addModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="editModalContainer modalContainer">
+        <div class="modal">
+            <div class="title">
+                <h1>Edit Note</h1>
+            </div>
+            <p>Message:</p>
+            <textarea class="editTextArea" placeholder="Update your note here..."></textarea>
+            <div class="buttonsContainer">
+                <button onclick="putModal()">Save</button>
+                <button onclick="closeEditModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="sectionTwo">
+        <h1>Your Notes</h1>
+
+        <div class="notesContainer">
+
+        </div>
+    </section>
+
+    <script th:src="@{auth.js}"></script>
+</body>
+</html>
