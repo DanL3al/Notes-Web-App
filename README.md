@@ -1,6 +1,6 @@
 # 📘 Remember It - Notes Application
 
-A simple **notes app** with **user authentication** built using **Spring Boot + JWT + Cookie** and a frontend using **HTML/CSS/JavaScript**.
+Remember it is a web application built with Spring Boot for managing personal notes. It features secure authentication using JWT and cookies, user registration and login, note creation and editing, and full session handling using Spring Security
 
 ---
 
@@ -14,42 +14,92 @@ A simple **notes app** with **user authentication** built using **Spring Boot + 
 - Responsive interface with modal note creation
 
 ---
+## Technologies
 
-## 🔐 JWT + Cookie Authentication
-
-- The JWT token is generated on login and saved as a cookie in the frontend:
-
-```js
-document.cookie = `jwt=${data.token}; path=/; max-age=1800; SameSite=Lax`;
-```
-
-- The token is then sent in the headers for protected requests:
-
-```js
-fetch("/notes", {
-  headers: {
-    'Authorization': `Bearer ${getTokenFromCookie()}`
-  }
-});
-```
-
-- On the backend, the token is manually extracted and validated.
-
----
-
-## 🚀 Technologies and Dependencies
-
-### Backend
-
-- **Java 17+**
+- **Java 17**
 - **Spring Boot 3.5.3**
 - **Spring Security**
 - **Spring Web**
 - **Spring Data JPA**
-- **H2 Database (or MySQL optionally)**
+- **MySQL**
 - **JWT (io.jsonwebtoken)**
+- **Thymeleaf**
 
-**Maven `pom.xml` dependencies:**
+## Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/DanL3al/Notes-Web-App.git
+```
+
+### 2. MySQL Setup
+
+- Create a database named `notesapp`
+- Example SQL:
+```sql
+CREATE DATABASE notesapp;
+```
+
+### 3. Configure `application.properties`
+
+Edit the file `src/main/resources/application.properties` with your MySQL credentials:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/notesapp?useSSL=false&serverTimezone=UTC
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+spring.sql.init.mode=always
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+server.port=8888
+```
+
+### 4. Run the Application
+
+```bash
+./mvnw spring-boot:run
+```
+
+Or open the project in IntelliJ and run the main class.
+
+### 5. Access the App
+
+Open in your browser:
+
+```
+http://localhost:8888/
+```
+
+## Using the App
+
+1. Go to `/` and register a new user.
+2. Log in to generate a JWT stored in a cookie.
+3. You'll be redirected to the notes page.
+4. Create, edit, or delete notes.
+
+## Authentication Details
+
+- JWTs are generated after login and stored in cookies.
+- Protected endpoints (like `/notes`) require a valid token in the `Authorization` header.
+- Cookies are set via `document.cookie` on the frontend.
+
+### JWT Details
+
+- The token includes the user's ID and username.
+- Tokens expire after 30 minutes.
+
+### Spring Security
+
+- Stateless session management
+- Custom authentication filter to extract JWT from header
+- Exception handling for unauthorized requests
+
+## Dependencies
 
 ```xml
 <dependencies>
@@ -57,23 +107,19 @@ fetch("/notes", {
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
-    
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-    
     <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
+        <groupId>com.mysql</groupId>
+        <artifactId>mysql-connector-j</artifactId>
         <scope>runtime</scope>
     </dependency>
-    
     <dependency>
         <groupId>io.jsonwebtoken</groupId>
         <artifactId>jjwt-api</artifactId>
@@ -96,19 +142,6 @@ fetch("/notes", {
 
 ---
 
-## 🧾 API Endpoints
-
-| Method | Endpoint              | Auth Required | Description                  |
-|--------|------------------------|----------------|------------------------------|
-| POST   | `/auth/register`      | ❌             | Register a new user          |
-| POST   | `/auth/login`         | ❌             | Login and receive a JWT      |
-| GET    | `/notes`              | ✅             | List user's personal notes   |
-| POST   | `/notes`              | ✅             | Create a new note            |
-| DELETE | `/notes/{id}`         | ✅             | Delete a note by ID          |
-| GET    | `/users/info`         | ✅             | Get user information         |
-
----
-
 ## 💻 Frontend
 
 - Built with **HTML, CSS and JavaScript**
@@ -127,16 +160,6 @@ The "Exit" button clears the cookie and redirects to the login page:
 document.cookie = 'jwt=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC';
 window.location.href = '/';
 ```
-
----
-
-## ✅ Future Improvements
-
-- ✅ Manual JWT validation
-- ☐ Form validation (frontend)
-- ☐ Animations and transitions
-- ☐ PostgreSQL support
-- ☐ Cloud deployment
 
 ---
 
